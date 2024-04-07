@@ -21,3 +21,11 @@ class Reserva(models.Model):
     turno = models.CharField( max_length=25,verbose_name ='Turno', choices = TURNO_OPCOES)
 
     
+    
+
+
+
+
+
+
+    

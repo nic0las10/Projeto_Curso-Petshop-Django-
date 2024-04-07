@@ -26,4 +26,5 @@ urlpatterns = [
   
     path('reserva/', include('reserva.urls', namespace='reserva')),
 
+    path('api/', include('rest_api.urls', namespace='api')),
 ]
