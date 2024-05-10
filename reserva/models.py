@@ -18,14 +18,25 @@ class Reserva(models.Model):
     dia = models.DateField(verbose_name = 'Dia da Reserva')
     observaçoes = models.TextField(verbose_name = "Observações")
     tamanho = models.IntegerField(verbose_name = 'Tamanho', choices = TAMANHO_OPCOES )
-    turno = models.CharField( max_length=25,verbose_name ='Turno', choices = TURNO_OPCOES)
-
+    turno = models.CharField(verbose_name ='Turno', choices = TURNO_OPCOES, max_length = 5)
+    petshop = models.ForeignKey(
+         'Petshop',
+        related_name='reservas',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
     
     
 
 
 
 
+class Petshop(models.Model):
+    nome = models.CharField(verbose_name="Nome", max_length=50 )
+    rua = models.CharField(verbose_name="Rua", max_length=100)
+    numero = models.CharField(verbose_name= "Número", max_length=10)
+    bairro = models.CharField(verbose_name="Bairro", max_length=50)
 
 
     
