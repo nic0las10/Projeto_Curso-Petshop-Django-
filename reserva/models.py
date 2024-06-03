@@ -15,7 +15,7 @@ class Reserva(models.Model):
     nomeDoPet = models.CharField(max_length=50, verbose_name="Nome do Pet")
     nomeDoDono = models.CharField(max_length=80, verbose_name="Nome do Dono")
     telefone = models.CharField(max_length = 15)
-    dia = models.DateField(verbose_name = 'Dia da Reserva')
+    dia = models.DateField(verbose_name = 'Dia de reserva')
     observaçoes = models.TextField(verbose_name = "Observações")
     tamanho = models.IntegerField(verbose_name = 'Tamanho', choices = TAMANHO_OPCOES )
     turno = models.CharField(verbose_name ='Turno', choices = TURNO_OPCOES, max_length = 5)
@@ -26,8 +26,12 @@ class Reserva(models.Model):
         blank=True,
         null=True
     )
+
+
     
     
+    def __str__(self):
+        return f'Nome do PET: {self.nomeDoPet} - Dia de reserva:{self.dia } - Turno: {self.turno}'
 
 
 
@@ -37,6 +41,9 @@ class Petshop(models.Model):
     rua = models.CharField(verbose_name="Rua", max_length=100)
     numero = models.CharField(verbose_name= "Número", max_length=10)
     bairro = models.CharField(verbose_name="Bairro", max_length=50)
+
+    def qtd_reservas(self):
+        return self.reservas.count()
 
 
     
